@@ -8,11 +8,21 @@ const Video = ({
   views,
   time,
   verified,
+  deleteVideo,
+  editVideo,
   children
 }) => {
+  
+  
   return (
     <div className="container">
-      <div>
+      <button className="close" onClick={() => deleteVideo(id)}>
+        X
+      </button>
+      <button className="edit" onClick={() => editVideo(id)}>
+        Edit
+      </button>
+      <div className="pic">
         <img src={`https://picsum.photos/id/${id}/160/90`} alt="random pic" />
       </div>
       <div className="title">{title}</div>

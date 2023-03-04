@@ -2,7 +2,7 @@ import React from 'react';
 import PlayButton from "./PlayButton";
 import Video from "./Video";
 
-const VideoList = ({videos}) => {
+const VideoList = ({videos, deleteVideo, editVideo}) => {
   return (
     <>
       {videos.map((video) => (
@@ -14,6 +14,8 @@ const VideoList = ({videos}) => {
           time={video.time}
           channel={video.channel}
           verified={video.verified}
+          deleteVideo={deleteVideo}
+          editVideo={editVideo}
         >
           <PlayButton
             onPlay={() => console.log("play...", video.title)}
