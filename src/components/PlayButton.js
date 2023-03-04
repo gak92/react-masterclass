@@ -1,13 +1,15 @@
 import './PlayButton.css';
-import React from 'react';
+import React, { useState } from 'react';
 
 const PlayButton = ({onPlay, onPause, children}) => {
 
   // don;t use this approach (props are read only)
-  let playing = false;
+  // let playing = false;
+
+  const [playing, setPlaying] = useState(false);
 
   const handleClick = (e) => {
-    console.log(e);
+    // console.log(e);
     e.stopPropagation();
 
     if(playing) {
@@ -16,12 +18,12 @@ const PlayButton = ({onPlay, onPause, children}) => {
     else {
       onPlay();
     }
-    playing = !playing;
+    setPlaying(!playing);
   }
 
   return (
       <button onClick={handleClick}>
-        {children}
+        {children} {playing? '⏸' : '▶'}
       </button>
   )
 }
