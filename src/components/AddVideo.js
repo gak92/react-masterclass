@@ -9,7 +9,7 @@ const initialState = {
   verified: false,
 };
 
-const AddVideo = ({ addVideo, updateVideo, editableVideo }) => {
+const AddVideo = ({ dispatch, editableVideo }) => {
 
   const [video, setVideo] = useState(initialState);
 
@@ -25,10 +25,10 @@ const AddVideo = ({ addVideo, updateVideo, editableVideo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(editableVideo) {
-      updateVideo(video);
+      dispatch({type: 'UPDATE', payload: video});
     }
     else {
-      addVideo(video);
+      dispatch({type: 'ADD', payload: video});
     }
     setVideo(initialState);
   };
