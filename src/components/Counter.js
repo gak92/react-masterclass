@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 export const Counter = () => {
   console.log("Render Counter");
   const [number, setNumber] = useState(0);
+  let count = useRef(0);
 
   const handleClick = (e) => {
     e.stopPropagation();
@@ -10,7 +11,12 @@ export const Counter = () => {
 
     // updater styled
     setNumber((num) => num+1);
+    setNumber((num) => num+1);
+    setNumber((num) => num+1);
     console.log(number);
+
+    count.current++;
+    console.log("Count: ", count.current);
   }
 
   return (

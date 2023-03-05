@@ -1,6 +1,7 @@
 import { useContext, useReducer, useState } from "react";
 import "./App.css";
 import AddVideo from "./components/AddVideo";
+import { Counter } from "./components/Counter";
 import VideoList from "./components/VideoList";
 import ThemeContext from "./context/ThemeContext";
 import VideoDispatchContext from "./context/VideoDispatchContext";
@@ -58,6 +59,7 @@ function App() {
             editVideo={editVideo}
           ></VideoList>
         </div>
+        <Counter></Counter>
         </VideoDispatchContext.Provider>
       </VideosContext.Provider>
     </ThemeContext.Provider>
