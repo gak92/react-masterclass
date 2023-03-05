@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
 import "./AddVideo.css";
+import React, { useContext, useEffect, useState } from "react";
+import VideoDispatchContext from "../context/VideoDispatchContext";
 
 const initialState = {
   title: '',
@@ -9,9 +10,10 @@ const initialState = {
   verified: false,
 };
 
-const AddVideo = ({ dispatch, editableVideo }) => {
+const AddVideo = ({ editableVideo }) => {
 
   const [video, setVideo] = useState(initialState);
+  const dispatch = useContext(VideoDispatchContext);
 
   const handleChange = (e) => {
     e.stopPropagation();
