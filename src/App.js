@@ -51,13 +51,10 @@ function App() {
             Mode
           </button>
           <AddVideo
-            // dispatch={dispatch}
             editableVideo={editableVideo}
           ></AddVideo>
 
           <VideoList
-            // videos={videos}
-            // dispatch={dispatch}
             editVideo={editVideo}
           ></VideoList>
         </div>
