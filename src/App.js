@@ -46,23 +46,20 @@ function App() {
     <ThemeContext.Provider value={mode}>
       <VideosContext.Provider value={videos}>
         <VideoDispatchContext.Provider value={dispatch}>
-        <div className={`App ${mode}`} onClick={() => console.log("App")}>
-          <button
-            onClick={() =>
-              setMode(mode === "darkMode" ? "lightMode" : "darkMode")
-            }
-          >
-            Mode
-          </button>
-          <AddVideo
-            editableVideo={editableVideo}
-          ></AddVideo>
+          <Counter></Counter>
 
-          <VideoList
-            editVideo={editVideo}
-          ></VideoList>
-        </div>
-        <Counter></Counter>
+          <div className={`App ${mode}`} onClick={() => console.log("App")}>
+            <button
+              onClick={() =>
+                setMode(mode === "darkMode" ? "lightMode" : "darkMode")
+              }
+            >
+              Mode
+            </button>
+            <AddVideo editableVideo={editableVideo}></AddVideo>
+            <VideoList editVideo={editVideo}></VideoList>
+          </div>
+
         </VideoDispatchContext.Provider>
       </VideosContext.Provider>
     </ThemeContext.Provider>

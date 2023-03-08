@@ -1,8 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
+
+const fib = (n) => {
+  if(n===1 || n===2) {
+    return 1;
+  }
+  return fib(n-1) + fib(n-2);
+}
 
 export const Counter = () => {
   console.log("Render Counter");
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(40);
   let count = useRef(0);
 
   const handleClick = (e) => {
@@ -19,9 +26,15 @@ export const Counter = () => {
     console.log("Count: ", count.current);
   }
 
+  
+
+  const fibMemoized = useMemo(() => {
+    return fib(number);
+  }, [number]);
+
   return (
     <>
-    <h1>{number}</h1>
+    <h1>{number} | {fibMemoized}</h1>
     <button onClick={handleClick}>Add</button>
     </>
   )
