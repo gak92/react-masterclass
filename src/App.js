@@ -6,13 +6,15 @@ import VideoList from "./components/VideoList";
 import ThemeContext from "./context/ThemeContext";
 import VideoDispatchContext from "./context/VideoDispatchContext";
 import VideosContext from "./context/VideosContext";
-import videosDB from "./data/videos";
+// import videosDB from "./data/videos";
 
 function App() {
   const [editableVideo, setEditableVideo] = useState(null);
 
   const videoReducer = (videos, action) => {
     switch (action.type) {
+      case "LOAD_VIDEOS":
+        return action.payload;
       case "ADD":
         return [...videos, { ...action.payload, id: videos.length + 1 }];
       case "DELETE":
@@ -27,7 +29,8 @@ function App() {
         return videos;
     }
   };
-  const [videos, dispatch] = useReducer(videoReducer, videosDB);
+  // const [videos, dispatch] = useReducer(videoReducer, videosDB);
+  const [videos, dispatch] = useReducer(videoReducer, []);
 
   const themeContext = useContext(ThemeContext);
   console.log({ themeContext });
