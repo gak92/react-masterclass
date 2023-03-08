@@ -1,11 +1,11 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useCallback } from 'react';
 
-const fib = (n) => {
-  if(n===1 || n===2) {
-    return 1;
-  }
-  return fib(n-1) + fib(n-2);
-}
+// const fib = (n) => {
+//   if(n===1 || n===2) {
+//     return 1;
+//   }
+//   return fib(n-1) + fib(n-2);
+// }
 
 export const Counter = () => {
   console.log("Render Counter");
@@ -26,11 +26,17 @@ export const Counter = () => {
     console.log("Count: ", count.current);
   }
 
+  const fibFx = useCallback(function fib (n) {
+    if(n===1 || n===2) {
+      return 1;
+    }
+    return fib(n-1) + fib(n-2);
+  }, []);
   
 
   const fibMemoized = useMemo(() => {
-    return fib(number);
-  }, [number]);
+    return fibFx(number);
+  }, [number, fibFx]);
 
   return (
     <>
