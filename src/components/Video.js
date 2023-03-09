@@ -17,6 +17,8 @@ const Video = ({
   const theme = useContext(ThemeContext);
   const dispatch = useVideoDispatch();
 
+  console.log("render video... ", id);
+
   // useEffect(() => {
   //   const idx = setInterval(() => {
   //     console.log("video playing... ", id);

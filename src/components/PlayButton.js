@@ -10,6 +10,8 @@ const PlayButton = ({onPlay, onPause, children}) => {
   const [playing, setPlaying] = useState(false);
   const theme = useContext(ThemeContext);
 
+  console.log("render play button..");
+
   const handleClick = (e) => {
     // console.log(e);
     e.stopPropagation();
