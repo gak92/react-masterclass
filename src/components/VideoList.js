@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect } from 'react';
-import useVideos from '../hooks/Videos';
+import React, { useCallback, useEffect, useMemo } from "react";
+import useVideos from "../hooks/Videos";
 import PlayButton from "./PlayButton";
 import Video from "./Video";
-import axios from 'axios';
-import useVideoDispatch from '../hooks/VideoDispatch';
+import axios from "axios";
+import useVideoDispatch from "../hooks/VideoDispatch";
 
-const VideoList = ({editVideo}) => {
-  const URL =  'https://my.api.mockaroo.com/video.json?key=ad62e250';
+const VideoList = ({ editVideo }) => {
+  const URL = "https://my.api.mockaroo.com/video.json?key=ad62e250";
 
   const videos = useVideos();
   const dispatch = useVideoDispatch();
@@ -16,8 +16,8 @@ const VideoList = ({editVideo}) => {
     const res = await axios.get(URL);
     console.log(res);
     // setVideos(res.data);
-    dispatch({type: "LOAD_VIDEOS", payload: res.data});
-  }
+    dispatch({ type: "LOAD_VIDEOS", payload: res.data });
+  };
 
   useEffect(() => {
     handleClick();
@@ -26,6 +26,11 @@ const VideoList = ({editVideo}) => {
   const play = useCallback(() => console.log("play..."), []);
   const pause = useCallback(() => console.log("pause..."), []);
 
+  const memoizedPlayButton = useMemo(() => {
+    <PlayButton onPlay={play} onPause={pause}>
+      Play
+    </PlayButton>;
+  }, [play, pause]);
 
   return (
     <>
@@ -41,16 +46,11 @@ const VideoList = ({editVideo}) => {
           verified={video.verified}
           editVideo={editVideo}
         >
-          <PlayButton
-            onPlay={play}
-            onPause={pause}
-          >
-            Play
-          </PlayButton>
+          {memoizedPlayButton}
         </Video>
       ))}
     </>
-  )
-}
+  );
+};
 
-export default VideoList
+export default VideoList;

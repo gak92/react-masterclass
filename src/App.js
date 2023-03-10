@@ -1,4 +1,4 @@
-import { useContext, useReducer, useState } from "react";
+import { useCallback, useContext, useReducer, useState } from "react";
 import "./App.css";
 import AddVideo from "./components/AddVideo";
 import { Counter } from "./components/Counter";
@@ -37,10 +37,11 @@ function App() {
 
   const [mode, setMode] = useState("darkMode");
 
-  const editVideo = (id) => {
+  
+  const editVideo = useCallback((id) => {
     console.log(id);
     setEditableVideo(videos.find((video) => video.id === id));
-  };
+  }, [videos]);
 
   return (
     <ThemeContext.Provider value={mode}>
