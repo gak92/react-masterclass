@@ -9,7 +9,7 @@ import React, { useState, useRef, useMemo, useCallback } from 'react';
 
 export const Counter = () => {
   console.log("Render Counter");
-  const [number, setNumber] = useState(40);
+  const [number, setNumber] = useState(10);
   let count = useRef(0);
 
   const handleClick = (e) => {

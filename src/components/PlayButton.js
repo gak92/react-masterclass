@@ -1,8 +1,8 @@
 import './PlayButton.css';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, memo } from 'react';
 import ThemeContext from '../context/ThemeContext';
 
-const PlayButton = ({onPlay, onPause, children}) => {
+const PlayButton = memo(({onPlay, onPause, children}) => {
 
   // don;t use this approach (props are read only)
   // let playing = false;
@@ -30,6 +30,6 @@ const PlayButton = ({onPlay, onPause, children}) => {
         {children} {playing? '⏸' : '▶'}
       </button>
   )
-}
+});
 
 export default PlayButton

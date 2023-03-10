@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import useVideos from '../hooks/Videos';
 import PlayButton from "./PlayButton";
 import Video from "./Video";
@@ -23,6 +23,9 @@ const VideoList = ({editVideo}) => {
     handleClick();
   }, []);
 
+  const play = useCallback(() => console.log("play..."), []);
+  const pause = useCallback(() => console.log("pause..."), []);
+
 
   return (
     <>
@@ -39,8 +42,8 @@ const VideoList = ({editVideo}) => {
           editVideo={editVideo}
         >
           <PlayButton
-            onPlay={() => console.log("play...", video.title)}
-            onPause={() => console.log("pause...", video.title)}
+            onPlay={play}
+            onPause={pause}
           >
             Play
           </PlayButton>
